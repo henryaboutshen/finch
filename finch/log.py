@@ -4,30 +4,35 @@ from functools import wraps
 
 import yaml
 
-with open('logging.yml', 'r') as f:
+with open('finch/conf/logging.yml', 'r') as f:
     dict_conf = yaml.load(f, Loader=yaml.FullLoader)
 logging.config.dictConfig(dict_conf)
 
-# logging.debug('debug message')
-# logging.info('info message')
-# logging.warning('warn message')
-# logging.error('error message')
-# logging.critical('critical message')
+
+def smart_decorator(decorator):
+    """
+    Base decorator for all decorators.
+    :param decorator: The decorator being decorated.
+    :return:
+    """
+    def decorator_proxy(func=None, **kwargs):
+        if func is not None:
+            return decorator(func=func, **kwargs)
+
+        def decorator_proxy(func):
+            return decorator(func=func, **kwargs)
+        return decorator_proxy
+    return decorator_proxy
 
 
-def exception(func):
+@smart_decorator
+def log(func, text=None):
     @wraps(func)
-    def log(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         try:
+            logging.debug('Call %s' % func.__name__)
+            logging.info(text)
             return func(*args, **kwargs)
         except Exception:
             logging.error(traceback.format_exc())
-    return log
-
-
-@exception
-def start():
-    1 / 0
-
-
-start()
+    return wrapper
