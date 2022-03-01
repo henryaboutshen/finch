@@ -2,7 +2,7 @@ version: 1
 disable_existing_loggers: False
 formatters:
   simple:
-    format: "%(asctime)s - %(levelname)s - %(message)s"
+    format: "%(asctime)s - %(filename)s:%(lineno)d - %(levelname)s - %(message)s"
 handlers:
   console:
     class: logging.StreamHandler
@@ -27,4 +27,4 @@ handlers:
     encoding: utf8
 root:
   level: DEBUG
-  handlers: [console,info_file_handler,error_file_handler]
+  handlers: [console, info_file_handler, error_file_handler]
