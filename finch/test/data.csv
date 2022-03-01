@@ -1,0 +1,3 @@
+environment,host,port
+ci,localhost,27017
+e2e,localhost,27018

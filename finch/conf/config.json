@@ -1,0 +1,8 @@
+{
+  "retries": 3,
+  "save_db": true,
+  "concurrency": 5,
+  "runner": {
+    "BondSolutionMongoRunner": ["bondsolution"]
+  }
+}

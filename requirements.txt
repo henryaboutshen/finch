@@ -1,0 +1,6 @@
+pytz==2018.7
+PyYAML==5.1.2
+jsonpath==0.82
+mongoengine==0.18.2
+openpyxl==3.0.0
+motor~=2.5.1

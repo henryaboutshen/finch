@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<div style="color:#1a8fd6;font-weight:700;font-size:28;">Data Sanity Report</div>
+<br>
+<table class="table1" border="1" border-color="#e6e6e6" width="280"
+       style="border-collapse:collapse;table-layout:fixed;">
+    <tr align="center">
+        <td bgcolor="#1a8fd6" width="135" style="color:#ffffff;font-size:15;font-weight:600;height:35;">
+            Environment
+        </td>
+        <td width="150" style="color:#1a8fd6;font-size:15;font-weight:600;height:35;">${env}</td>
+    </tr>
+    <tr align="center">
+        <td bgcolor="#1a8fd6" style="color:#ffffff;font-size:15;font-weight:600;height:35;">Date</td>
+        <td width="150" style="color:#1a8fd6;font-size:15;font-weight:600;height:35;">${date}</td>
+    </tr>
+</table>
+<br>
+
+<table class="table2" border="1" border-color="#e6e6e6" width="100%"
+       style="border-collapse:collapse;table-layout:fixed;word-break:break-all;">
+    <tr align="center">
+        <td bgcolor="#1a8fd6" width="130" nowrap style="color:#ffffff;font-size:15;font-weight:600;height:45;">
+            Pass Rate
+        </td>
+        <td bgcolor="#1a8fd6" width="60" nowrap style="color:#ffffff;font-size:15;font-weight:600;height:45;">
+            Case Executed / Failed
+        </td>
+        <td bgcolor="#1a8fd6" width="150" nowrap style="color:#ffffff;font-size:15;font-weight:600;height:45;">
+            Owner
+        </td>
+        <td bgcolor="#1a8fd6" style="color:#ffffff;font-size:15;font-weight:600;height:45;">
+            Issues/Comments
+        </td>
+    </tr>
+    <tr align="center" bgcolor="#ffffff">
+        <td bgcolor="${bg_color}">${pass_rate}</td>
+        <td>${executed} / ${failed}</td>
+        <td align="left">${owner}</td>
+        <td align="left">${comment}</td>
+    </tr>
+</table>
+</html>
