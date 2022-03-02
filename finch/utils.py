@@ -14,7 +14,7 @@ def update_test_result(result, test, checkpoint, checkpoint_result, checkpoint_c
         result[test][checkpoint]['comments'] = checkpoint_comment
 
 
-def get_test_result(env, result):
+def get_test_result(result):
     """
     Give a brief summary of test results.
     """

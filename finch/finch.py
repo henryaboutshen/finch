@@ -72,8 +72,8 @@ def run_cli(argv):
     runner = RunnerFactory.build_runner(runner_type, mongo[env])
     result = runner.run(tests)
     logging.debug('Result: %s' % result)
-    fail_exist, result_summary = get_test_result(env, result)
-    logging.info('Fail test exist: %s' % fail_exist)
+    fail_exist, result_summary = get_test_result(result)
+    logging.info('Fail tests exist: %s' % fail_exist)
 
     job_end_time = time.time()
 

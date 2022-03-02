@@ -40,7 +40,7 @@ class MongoRunner(RunnerInterface):
         self.mongo = mongo
 
     @retry()
-    async def query(self, test=None, result=None, client=None):
+    def query(self, test=None, result=None, client=None):
         pass
 
     def run(self, tests):
@@ -60,8 +60,8 @@ class BondSolutionMongoRunner(MongoRunner):
     """
     # @find()
     @count()
-    async def query(self, test=None, result=None, client=None):
-        n = await client.bondsolution.bond.count_documents({})
+    def query(self, test=None, result=None, client=None):
+        pass
 
 
 class RunnerFactory(FactoryInterface):
