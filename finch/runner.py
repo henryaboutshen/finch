@@ -39,8 +39,7 @@ class MongoRunner(RunnerInterface):
     def __init__(self, mongo):
         self.mongo = mongo
 
-    @retry()
-    def query(self, test=None, result=None, client=None):
+    async def query(self, test=None, result=None, client=None):
         pass
 
     def run(self, tests):
@@ -58,10 +57,10 @@ class BondSolutionMongoRunner(MongoRunner):
     """
     Bond Solution MongoDB runner class
     """
-    # @find()
-    @count()
-    def query(self, test=None, result=None, client=None):
-        pass
+    # @retry()
+    async def query(self, test=None, result=None, client=None):
+        await test_count(test, result, client)
+        await test_find(test, result, client)
 
 
 class RunnerFactory(FactoryInterface):
