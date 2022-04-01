@@ -43,7 +43,7 @@ class MongoRunner(RunnerInterface):
         pass
 
     def run(self, tests):
-        result = {}
+        result = []
         client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://%s:%s@%s:%s/?authSource=%s' %
                                                         (self.mongo['username'], self.mongo['password'],
                                                          self.mongo['host'], self.mongo['port'], self.mongo['db']))

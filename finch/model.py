@@ -15,7 +15,7 @@ class finch_result(Document):
     total = IntField(required=True)
     duration = FloatField(required=True)
     execution_time = DateTimeField(default=datetime.datetime.utcnow())
-    test = DictField(required=True)
+    test = ListField()
 
 
 def save_result(id, env, job, result_summary, duration, result):

@@ -5,13 +5,25 @@ def update_test_result(result, test, checkpoint, checkpoint_result, checkpoint_c
     """
     Update case result and add comment if any.
     """
-    if test not in result:
-        result[test] = {}
-    if checkpoint not in result[test]:
-        result[test][checkpoint] = {}
-    result[test][checkpoint]['result'] = checkpoint_result
+    temp = {}
+    index = -1
+    for item in result:
+        if item['id'] == test:
+            temp = item
+            index = result.index(item)
+            break
+    if index == -1:
+        temp['id'] = test
+        temp['checkpoint'] = {}
+    if checkpoint not in temp['checkpoint']:
+        temp['checkpoint'][checkpoint] = {}
+    temp['checkpoint'][checkpoint]['result'] = checkpoint_result
     if checkpoint_comment:
-        result[test][checkpoint]['comments'] = checkpoint_comment
+        temp['checkpoint'][checkpoint]['comments'] = checkpoint_comment
+    if index == -1:
+        result.append(temp)
+    else:
+        result[index] = temp
 
 
 def get_test_result(result):
@@ -23,8 +35,8 @@ def get_test_result(result):
 
     for test in result:
         is_fail = False
-        for checkpoint in result[test]:
-            if result[test][checkpoint]['result'] != 'pass':
+        for checkpoint in test['checkpoint']:
+            if test['checkpoint'][checkpoint]['result'] != 'pass':
                 is_fail = True
                 break
         if is_fail:
